@@ -30,7 +30,7 @@ def menu_produit():
     scroll_text.pack(pady=200, padx=100)
     i = 1
     while i ==1:
-        btn_pr(prod_popup,scroll_text)
+        btn_pr(prod_popup)
         data_produit = database_handler.list_produit()
         for i in data_produit:
             button = Button(scroll_text, fg="snow",bg="purple4", width=70, text=f"{i['id_p']}                       {i['id_f']}                      {i['nom']}                      {i['nb']}                      {i['prix']}")
