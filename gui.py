@@ -4,6 +4,7 @@ from raccourcis import *
 from produit import *
 from fournisseur import *
 from vente import *
+from rapport import *
 import tkinter as tk
 from data.database_handler import DatabaseHandler
 Database_handler = DatabaseHandler("database.db")
@@ -18,7 +19,7 @@ def gui():
     add_btn(window,"Produit", 500,200,menu_produit)
     add_btn(window,"Fournisseur", 500,300,menu_fournisseur)
     add_btn(window,"Vente", 500,400,menu_vente)
-    add_btn(window,"Rapport", 500,500)
+    add_btn(window,"Rapport", 500,500, menu_rapport)
     exit_btn(window)
     window.mainloop()
 
@@ -72,6 +73,26 @@ def menu_vente():
             scroll_text.window_create(END, window=button)
             scroll_text.insert(END, '\n')
         scroll_text.configure(state='disabled')
+
+
+def menu_rapport():
+    rapport_popup = Toplevel(window, bg="purple2")
+    rapport_popup.attributes('-fullscreen', True)
+    indication = affichage(rapport_popup, " STOCK            VENTE",520,100)
+    scroll_text = scrolledtext.ScrolledText(rapport_popup,width=60, height=80, bg="purple2", fg="snow", wrap=WORD)
+    scroll_text.pack(pady=200, padx=100)
+    i= 1
+    while i ==1:
+        btn_r(rapport_popup)
+        data_stock = database_handler.get_stock_sum()
+        data_vente = database_handler.get_vente_count()
+        for i in range(2):
+            button = Button(scroll_text, fg="snow", bg="purple4", width=70, text=f"{i['stock']}          {i['vente']}")
+            button.pack(padx=0, pady=5)
+            scroll_text.window_create(END, window=button)
+            scroll_text.insert(END, '\n')
+        scroll_text.configure(state='disabled')
+
 
 gui()
 

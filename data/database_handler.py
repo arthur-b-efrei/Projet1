@@ -6,6 +6,23 @@ class DatabaseHandler():
         self.con = sqlite3.connect(f"{os.path.dirname(os.path.abspath(__file__))}/{database_name}")
         self.con.row_factory = sqlite3.Row
 
+    def get_stock_sum(self):
+        cursor = self.con.cursor()
+        query = "SELECT SUM(nb) AS total FROM produit;"
+        cursor.execute(query)
+        result = cursor.fetchone()
+        cursor.close()
+        return result['total']
+    
+
+    def get_vente_count(self):
+        cursor = self.con.cursor()
+        query = "SELECT COUNT(DISTINCT id_v) AS count FROM vente;"
+        cursor.execute(query)
+        result = cursor.fetchone()
+        cursor.close()
+        return result['count']
+    
 
     def list_vente(self) ->list:
         cursor = self.con.cursor()
