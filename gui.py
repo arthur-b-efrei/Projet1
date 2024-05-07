@@ -15,6 +15,7 @@ window.attributes('-fullscreen', True)
 window.config(bg="purple4")
 #plein écran et couleur en fond
 
+#menu_definition
 def gui():
     add_btn(window,"Produit", 500,200,menu_produit)
     add_btn(window,"Fournisseur", 500,300,menu_fournisseur)
@@ -23,6 +24,7 @@ def gui():
     exit_btn(window)
     window.mainloop()
 
+#menu_produit
 def menu_produit():
     prod_popup = Toplevel(window,bg="purple2")
     prod_popup.attributes('-fullscreen',True)
@@ -40,6 +42,7 @@ def menu_produit():
             scroll_text.insert(END, '\n')
         scroll_text.configure(state='disabled')
 
+#menu_fournisseur
 def menu_fournisseur():
     fournisseur_popup = Toplevel(window,bg="purple2")
     fournisseur_popup.attributes('-fullscreen',True)
@@ -57,6 +60,7 @@ def menu_fournisseur():
             scroll_text.insert(END, '\n')
         scroll_text.configure(state='disabled')
 
+#menu_vente
 def menu_vente():
     vente_popup = Toplevel(window, bg="purple2")
     vente_popup.attributes('-fullscreen',True)
@@ -74,7 +78,7 @@ def menu_vente():
             scroll_text.insert(END, '\n')
         scroll_text.configure(state='disabled')
 
-
+#menu_raport
 def menu_rapport():
     rapport_popup = Toplevel(window, bg="purple2")
     rapport_popup.attributes('-fullscreen', True)
